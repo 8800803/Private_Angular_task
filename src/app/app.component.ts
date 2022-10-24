@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FormControl,FormGroup,FormGroupName, Validators} from '@angular/forms'
 
 @Component({
   selector: 'app-root',
@@ -7,10 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'firstProject';
-  getValue(values:any){
-    console.log(values);
+  loginForm = new FormGroup({
+    name: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required),
+    password: new FormControl('',Validators.required),
+    confirmPassword: new FormControl('',Validators.required)
+  })
+  // getValue(values:any){
+  //   console.log(values);
 
-  }
+  // }
+  get name() {return this.loginForm.get('name')}
 }
 
 
