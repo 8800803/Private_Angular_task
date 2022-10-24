@@ -14,6 +14,16 @@ export class QuestionService {
 
     const questions: QuestionBase<string>[] = [
 
+      new DropdownQuestion({
+        key: 'gender',
+        label: 'Gender',
+        options: [
+          {key: 'male',  value: 'Male'},
+          {key: 'fenale',  value: 'Female'}
+        ],
+        order: 5
+      }),
+
       new TextboxQuestion({
         key:'cPassword',
         label:'Confirm Password',
