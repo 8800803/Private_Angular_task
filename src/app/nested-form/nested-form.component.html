@@ -1,0 +1,7 @@
+<div class="address-container" *ngFor="let group of addressArray.controls; index as i" formArrayName="address">
+    <div [formGroupName]="i">
+        <input placeholder="Street" [formControlName]="i" id="1" />
+        <input placeholder="City" [formControlName]="i" id="2" />
+        <input placeholder="State" [formControlName]="i" id="3" />
+    </div>
+</div>

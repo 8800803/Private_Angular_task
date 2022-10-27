@@ -1,0 +1,11 @@
+<mat-form-field class="example-chip-list" appearance="fill">
+    <mat-chip-list #chipList aria-label="Fruit selection">
+        <mat-chip *ngFor="let opt of chips" [value]="opt.key" (removed)="remove(opt)">
+            {{opt.name}}
+            <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+        </mat-chip>
+        <input matInput placeholder="  New fruit..." [formControl]="formControl" [matChipInputFor]="chipList" (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+</mat-form-field>
