@@ -21,13 +21,18 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // this.form! = this._fb.group(this.toFormGroup(this.questions))
-    this.form! = this.toFormGroup(this.questions,this.nQuestions);
+    this.form! = this.toFormGroup(this.questions);
   }
-  toFormGroup(questions:any,nQuestions:any ) {let group: any = {};
-    const nestedGroup:any ={};
+  toFormGroup(questions:any) {let group: any = {};
+    const nestedAddressGroup:any ={};
 
     questions.forEach((question: any ) => {
-      if(question.type==="sections")
+      if(question.form ==="addressForm"){
+        nestedAddressGroup[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
+        : new FormControl(question.value || '');
+        console.log(nestedAddressGroup)
+      }
+      else if(question.type==="sections")
       {
         const group1: any = {};
 
@@ -44,6 +49,7 @@ export class AppComponent implements OnInit {
     });
 
     group['address'] = this._fb.array([this.addAddressGroup()])
+    // group['address'] = this._fb.array([this._fb.group(nestedAddressGroup)])
     group['education'] = this._fb.array([this.addEducationGroup()])
 
 

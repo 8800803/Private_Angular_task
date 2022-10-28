@@ -2,7 +2,12 @@
     <ng-container formArrayName="education" *ngFor="let group of educationArray.controls; let i = index">
         <div [formGroupName]="i">
             <label>Degree</label><br>
-            <input placeholder="Degree" formControlName="degree" /><br>
+            <select formControlName="degree" id="degree">
+        <option value="software">Software</option>
+        <option value="civil">Civil</option>
+        <option value="mechanical">Mechanical</option>
+      </select><br>
+            <!-- <input placeholder="Degree" formControlName="degree" /><br> -->
             <label>Field</label><br>
             <input placeholder="Field" formControlName="field" /><br>
             <label>Major</label><br>

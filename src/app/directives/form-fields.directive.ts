@@ -31,12 +31,19 @@ export class FormFieldsDirective implements AfterViewInit {
   constructor(private vcRef: ViewContainerRef) { }
   ngAfterViewInit(): void {
     this.questions.forEach((element: any) => {
+      // if(element.form ==='address'){
+      //   var ref: any;
+      // const component = this.models['nestedForm'];
+      // ref = this.vcRef.createComponent(component);
+      // ref.instance.group = this.group;
+      // }else {
       const type = element.type;
       var ref: any;
       const component = this.models[type];
       ref = this.vcRef.createComponent(component);
       ref.instance.element = element;
       ref.instance.formControl = this.group.get(element.key);
+      // }
     });
     if(this.group.contains('address')){
       var ref: any;

@@ -138,13 +138,33 @@ export class DataService {
         "options": ["apple","banana"],
         "order": 9
       },
+
       // {
-      //   "key": "nested",
-      //   "label": "nested",
-      //   "type": "email",
+      //   "form":"addressForm",
+      //   "key": "street",
+      //   "label": "Street",
+      //   "type": "text",
       //   "required": true,
-      //   "value":"nested@gmail.com",
+      //   "value":"12",
       //   "order": 10
+      // },
+      // {
+      //   "form":"addressForm",
+      //   "key": "city",
+      //   "label": "City",
+      //   "type": "text",
+      //   "required": true,
+      //   "value":"Islamabad",
+      //   "order": 11
+      // },
+      // {
+      //   "form":"addressForm",
+      //   "key": "state",
+      //   "label": "State",
+      //   "type": "text",
+      //   "required": true,
+      //   "value":"Pakistan",
+      //   "order": 12
       // },
 
 

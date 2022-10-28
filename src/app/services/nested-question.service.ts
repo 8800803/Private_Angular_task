@@ -10,21 +10,32 @@ export class NestedQuestionService {
 
     let ViewData:any=[
       {
-        "key": "FirstName",
-        "label": "Name",
-        "type": "text",
-        "value": "Yawar",
-        "required": true,
-        "order": 10
-      },
-      {
-        "key": "LastName",
-        "label": "Name",
-        "type": "text",
-        "value": "Yawar",
-        "required": true,
-        "order": 11
-      },
+          "form":"addressForm",
+          "key": "street",
+          "label": "Street",
+          "type": "text",
+          "required": true,
+          "value":"12",
+          "order": 10
+        },
+        {
+          "form":"addressForm",
+          "key": "city",
+          "label": "City",
+          "type": "text",
+          "required": true,
+          "value":"Islamabad",
+          "order": 11
+        },
+        {
+          "form":"addressForm",
+          "key": "state",
+          "label": "State",
+          "type": "text",
+          "required": true,
+          "value":"Pakistan",
+          "order": 12
+        },
 
 
     ];
