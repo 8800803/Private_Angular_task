@@ -166,33 +166,47 @@ export class DataService {
         "value":"Pakistan",
         "order": 12
       },
-      // {
-      //   "form":"educationForm",
-      //   "key": "degree",
-      //   "label": "Degree",
-      //   "type": "text",
-      //   "required": true,
-      //   "value":"12",
-      //   "order": 13
-      // },
-      // {
-      //   "form":"educationForm",
-      //   "key": "city",
-      //   "label": "City",
-      //   "type": "text",
-      //   "required": true,
-      //   "value":"Islamabad",
-      //   "order": 14
-      // },
-      // {
-      //   "form":"educationForm",
-      //   "key": "state",
-      //   "label": "State",
-      //   "type": "text",
-      //   "required": true,
-      //   "value":"Pakistan",
-      //   "order": 15
-      // },
+      {
+        "form":"educationForm",
+        "key": "degree",
+        "label": "Degree",
+        "type": "dropdown",
+        "value": "software",
+        "required": true,
+        "options": [
+          {
+            "id": "software",
+            "name": "Software"
+          },
+          {
+            "id": "civil",
+            "name": "Civil"
+          },
+          {
+            "id": "mechanical",
+            "name": "Mechanical"
+          }
+        ],
+        "order": 13
+      },
+      {
+        "form":"educationForm",
+        "key": "field",
+        "label": "Field",
+        "type": "text",
+        "required": true,
+        "value":"Computer",
+        "order": 14
+      },
+      {
+        "form":"educationForm",
+        "key": "major",
+        "label": "Major",
+        "type": "text",
+        "required": true,
+        "value":"test",
+        "order": 15
+      },
 
 
     ];

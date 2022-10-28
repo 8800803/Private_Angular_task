@@ -25,10 +25,15 @@ export class AppComponent implements OnInit {
   }
   toFormGroup(questions:any) {let group: any = {};
     const nestedAddressGroup:any ={};
+    const nestedEducationGroup:any ={};
 
     questions.forEach((question: any ) => {
       if(question.form ==="addressForm"){
         nestedAddressGroup[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
+        : new FormControl(question.value || '');
+      }
+      else if(question.form ==="educationForm"){
+        nestedEducationGroup[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
         : new FormControl(question.value || '');
       }
       else if(question.type==="sections")
@@ -48,6 +53,7 @@ export class AppComponent implements OnInit {
     });
 
     group['address'] = this._fb.array([this._fb.group(nestedAddressGroup)])
+    group['education'] = this._fb.array([this._fb.group(nestedEducationGroup)])
     // group['education'] = this._fb.array([this.addEducationGroup()])
 
 
