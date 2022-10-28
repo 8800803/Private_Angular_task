@@ -1,7 +1,26 @@
-<div class="address-container" *ngFor="let group of addressArray.controls; index as i" formArrayName="address">
-    <div [formGroupName]="i">
-        <input placeholder="Street" [formControlName]="i" id="1" />
-        <input placeholder="City" [formControlName]="i" id="2" />
-        <input placeholder="State" [formControlName]="i" id="3" />
-    </div>
+<div [formGroup]="group">
+    <ng-container formArrayName="address" *ngFor="let group of addressArray.controls; let i = index">
+        <div [formGroupName]="i">
+
+            <input placeholder="Street" formControlName="street" />
+            <input placeholder="City" formControlName="city" />
+            <input placeholder="State" formControlName="state" />
+        </div>
+    </ng-container>
 </div>
+<!-- 
+<ng-container formArrayName="address">
+    <ng-container *ngFor="let group of addressArray.controls; let index = index">
+        <div [formGroupName]="index">
+            <input placeholder="Street" formControlName="street" />
+            <input placeholder="City" formControlName="city" />
+            <input placeholder="State" formControlName="state" />
+        </div>
+    </ng-container>
+</ng-container> -->
+<!-- <ng-container *ngFor="let adminForm of addressArray.controls; let index = index">
+    <div>
+        <input id="name" type="text" formControlName="name" />
+        <input id="email" type="text" formControlName="email" />
+    </div>
+</ng-container> -->

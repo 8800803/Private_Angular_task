@@ -18,7 +18,7 @@ export class NestedFormComponent implements OnInit {
   @Input()
   group!: UntypedFormGroup;
   @Input() element:any;
-  formControl!: UntypedFormControl;
+  // formControl!: UntypedFormControl;
    get addressArray(): FormArray {
       return <FormArray>this.group.get('address');
     }

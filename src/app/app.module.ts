@@ -18,6 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { NestedFormComponent } from './nested-form/nested-form.component';
+import { NestedEducationComponent } from './nested-education/nested-education.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NestedFormComponent } from './nested-form/nested-form.component';
     CustomLabelComponent,
     CustomCheckboxComponent,
     ChipsComponent,
-    NestedFormComponent
+    NestedFormComponent,
+    NestedEducationComponent
   ],
   imports: [
     BrowserModule,

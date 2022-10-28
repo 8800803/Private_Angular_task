@@ -23,8 +23,7 @@ export class AppComponent implements OnInit {
     // this.form! = this._fb.group(this.toFormGroup(this.questions))
     this.form! = this.toFormGroup(this.questions,this.nQuestions);
   }
-  toFormGroup(questions:any,nQuestions:any ) {
-    const group: any = {};
+  toFormGroup(questions:any,nQuestions:any ) {let group: any = {};
     const nestedGroup:any ={};
 
     questions.forEach((question: any ) => {
@@ -43,26 +42,10 @@ export class AppComponent implements OnInit {
         : new FormControl(question.value || '');
       }
     });
-    // nQuestions.forEach((question: any ) => {
-    //   if(question.type==="sections")
-    //   {
-    //     const group2: any = {};
 
-    //     question.sections.forEach((question: any ) => {
-    //       group2[question.key]=question.required ? new FormControl(question.value || '', Validators.required)
-    //       : new FormControl(question.value || '');
-    //     })
-    //     nestedGroup[question.key]=new FormGroup(group2);
-    //   }
-    //   else{
-    //     nestedGroup[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
-    //     : new FormControl(question.value || '');
-    //   }
-    // });
-
-    //nested Question
-    // group['address'] = this._fb.group(nestedGroup);
     group['address'] = this._fb.array([this.addAddressGroup()])
+
+
     // console.log(this._fb.group(group));
 
     return this._fb.group(group);
@@ -91,9 +74,9 @@ export class AppComponent implements OnInit {
     });
   }
 
-  // get addressArray(): FormArray {
-  //   return <FormArray>this.form.get('address');
-  // }
+  get addressArray(): FormArray {
+    return <FormArray>this.form.get('address');
+  }
 
 }
 
