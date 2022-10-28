@@ -139,32 +139,59 @@ export class DataService {
         "order": 9
       },
 
+      {
+        "form":"addressForm",
+        "key": "street",
+        "label": "Street",
+        "type": "text",
+        "required": true,
+        "value":"12",
+        "order": 10
+      },
+      {
+        "form":"addressForm",
+        "key": "city",
+        "label": "City",
+        "type": "text",
+        "required": true,
+        "value":"Islamabad",
+        "order": 11
+      },
+      {
+        "form":"addressForm",
+        "key": "state",
+        "label": "State",
+        "type": "text",
+        "required": true,
+        "value":"Pakistan",
+        "order": 12
+      },
       // {
-      //   "form":"addressForm",
-      //   "key": "street",
-      //   "label": "Street",
+      //   "form":"educationForm",
+      //   "key": "degree",
+      //   "label": "Degree",
       //   "type": "text",
       //   "required": true,
       //   "value":"12",
-      //   "order": 10
+      //   "order": 13
       // },
       // {
-      //   "form":"addressForm",
+      //   "form":"educationForm",
       //   "key": "city",
       //   "label": "City",
       //   "type": "text",
       //   "required": true,
       //   "value":"Islamabad",
-      //   "order": 11
+      //   "order": 14
       // },
       // {
-      //   "form":"addressForm",
+      //   "form":"educationForm",
       //   "key": "state",
       //   "label": "State",
       //   "type": "text",
       //   "required": true,
       //   "value":"Pakistan",
-      //   "order": 12
+      //   "order": 15
       // },
 
 

@@ -30,7 +30,6 @@ export class AppComponent implements OnInit {
       if(question.form ==="addressForm"){
         nestedAddressGroup[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
         : new FormControl(question.value || '');
-        console.log(nestedAddressGroup)
       }
       else if(question.type==="sections")
       {
@@ -48,9 +47,8 @@ export class AppComponent implements OnInit {
       }
     });
 
-    group['address'] = this._fb.array([this.addAddressGroup()])
-    // group['address'] = this._fb.array([this._fb.group(nestedAddressGroup)])
-    group['education'] = this._fb.array([this.addEducationGroup()])
+    group['address'] = this._fb.array([this._fb.group(nestedAddressGroup)])
+    // group['education'] = this._fb.array([this.addEducationGroup()])
 
 
     // console.log(this._fb.group(group));
