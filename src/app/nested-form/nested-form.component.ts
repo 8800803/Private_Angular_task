@@ -11,22 +11,12 @@ export class NestedFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.addressArray);
-
   }
 
   @Input()
   group!: UntypedFormGroup;
-  @Input() element:any;
-  // formControl!: UntypedFormControl;
    get addressArray(): FormArray {
       return <FormArray>this.group.get('address');
     }
-
-    // onSearchChange(searchValue: any): void {
-    //   console.log(searchValue);
-
-    //   this.group.patchValue(searchValue)
-    // }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormArray, UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-nested-education',
@@ -10,6 +11,12 @@ export class NestedEducationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+  @Input()
+  group!: UntypedFormGroup;
+
+  get educationArray(): FormArray {
+    return <FormArray>this.group.get('education');
   }
 
 }

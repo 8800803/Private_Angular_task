@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
     });
 
     group['address'] = this._fb.array([this.addAddressGroup()])
+    group['education'] = this._fb.array([this.addEducationGroup()])
 
 
     // console.log(this._fb.group(group));
@@ -68,14 +69,18 @@ export class AppComponent implements OnInit {
 
    addAddressGroup(): FormGroup {
     return this._fb.group({
-      street:'t',
-      city: 't',
-      state: 't'
+      street:'12',
+      city: 'Islamabad',
+      state: 'Pakistan'
     });
   }
 
-  get addressArray(): FormArray {
-    return <FormArray>this.form.get('address');
+  addEducationGroup(): FormGroup {
+    return this._fb.group({
+      degree:'Software',
+      field: 'Computer',
+      major: 'test'
+    });
   }
 
 }

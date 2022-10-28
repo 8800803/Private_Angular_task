@@ -5,6 +5,7 @@ import { CustomCheckboxComponent } from '../form-fields/custom-checkbox/custom-c
 import { CustomRadioComponent } from '../form-fields/custom-radio/custom-radio.component';
 import { CustomSelectComponent } from '../form-fields/custom-select/custom-select.component';
 import { CustomTextComponent } from '../form-fields/custom-text/custom-text.component';
+import { NestedEducationComponent } from '../nested-education/nested-education.component';
 import { NestedFormComponent } from '../nested-form/nested-form.component';
 
 @Directive({
@@ -22,7 +23,8 @@ export class FormFieldsDirective implements AfterViewInit {
     radio: CustomRadioComponent,
     sections: CustomSelectComponent,
     chips:ChipsComponent,
-    nestedForm:NestedFormComponent
+    nestedForm:NestedFormComponent,
+    nestedEducation:NestedEducationComponent
 
   }
 
@@ -39,6 +41,13 @@ export class FormFieldsDirective implements AfterViewInit {
     if(this.group.contains('address')){
       var ref: any;
       const component = this.models['nestedForm'];
+      ref = this.vcRef.createComponent(component);
+      ref.instance.group = this.group;
+    }
+
+    if(this.group.contains('education')){
+      var ref: any;
+      const component = this.models['nestedEducation'];
       ref = this.vcRef.createComponent(component);
       ref.instance.group = this.group;
     }

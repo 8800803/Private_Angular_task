@@ -1,1 +1,12 @@
-<p>nested-education works!</p>
+<div [formGroup]="group" class="differ">
+    <ng-container formArrayName="education" *ngFor="let group of educationArray.controls; let i = index">
+        <div [formGroupName]="i">
+            <label>Degree</label><br>
+            <input placeholder="Degree" formControlName="degree" /><br>
+            <label>Field</label><br>
+            <input placeholder="Field" formControlName="field" /><br>
+            <label>Major</label><br>
+            <input placeholder="Major" formControlName="major" /><br>
+        </div>
+    </ng-container>
+</div>
