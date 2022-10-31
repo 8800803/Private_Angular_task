@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { NestedFormComponent } from './nested-form/nested-form.component';
 import { NestedEducationComponent } from './nested-education/nested-education.component';
+import { ObjectToArrayPipe } from './pipes/object-to-array.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NestedEducationComponent } from './nested-education/nested-education.co
     CustomCheckboxComponent,
     ChipsComponent,
     NestedFormComponent,
-    NestedEducationComponent
+    NestedEducationComponent,
+    ObjectToArrayPipe
   ],
   imports: [
     BrowserModule,

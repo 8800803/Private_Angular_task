@@ -10,9 +10,12 @@ import { NestedQuestionService } from './services/nested-question.service';
 })
 export class AppComponent implements OnInit {
   title = 'dynamicComponent';
+   nestedFormsName: string[] = ["address","education"]
   questions: any;
   nQuestions: any;
   form!: FormGroup;
+   nestedAddressGroup:any ={};
+   nestedEducationGroup:any ={};
 
   constructor(private DataService:DataService,private _fb: FormBuilder,private nestedQuestions:NestedQuestionService){
     this.questions= this.DataService.GetData();
@@ -20,20 +23,19 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.form! = this._fb.group(this.toFormGroup(this.questions))
     this.form! = this.toFormGroup(this.questions);
+    this.form.addControl('address',this._fb.group(this.nestedAddressGroup))
+    this.form.addControl('education',this._fb.group(this.nestedEducationGroup))
   }
   toFormGroup(questions:any) {let group: any = {};
-    const nestedAddressGroup:any ={};
-    const nestedEducationGroup:any ={};
 
     questions.forEach((question: any ) => {
-      if(question.form ==="addressForm"){
-        nestedAddressGroup[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
+      if(question.form ==="address"){
+        this.nestedAddressGroup[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
         : new FormControl(question.value || '');
       }
-      else if(question.form ==="educationForm"){
-        nestedEducationGroup[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
+      else if(question.form ==="education"){
+        this.nestedEducationGroup[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
         : new FormControl(question.value || '');
       }
       else if(question.type==="sections")
@@ -51,16 +53,12 @@ export class AppComponent implements OnInit {
         : new FormControl(question.value || '');
       }
     });
-
-    group['address'] = this._fb.array([this._fb.group(nestedAddressGroup)])
-    group['education'] = this._fb.array([this._fb.group(nestedEducationGroup)])
-    // group['education'] = this._fb.array([this.addEducationGroup()])
-
-
-    // console.log(this._fb.group(group));
+    // group[this.nestedFormsName[0]] = this._fb.array([this._fb.group(nestedAddressGroup)])
+    // group[this.nestedFormsName[1]] = this._fb.array([this._fb.group(nestedEducationGroup)])
 
     return this._fb.group(group);
   }
+
 
    isValid(key:any,type:any) {
     if(type!=="sections")
@@ -75,22 +73,6 @@ export class AppComponent implements OnInit {
      let form1 =this.form.get(type) as FormArray;
      let bool = form1.controls[key].valid;
      return bool;
-  }
-
-   addAddressGroup(): FormGroup {
-    return this._fb.group({
-      street:'12',
-      city: 'Islamabad',
-      state: 'Pakistan'
-    });
-  }
-
-  addEducationGroup(): FormGroup {
-    return this._fb.group({
-      degree:'Software',
-      field: 'Computer',
-      major: 'test'
-    });
   }
 
 }

@@ -1,4 +1,4 @@
-<div [formGroup]="group" class="differ">
+<!-- <div [formGroup]="group" class="differ">
     <ng-container formArrayName="address" *ngFor="let group of addressArray.controls; let i = index">
         <div [formGroupName]="i">
             <label>Street</label><br>
@@ -9,4 +9,24 @@
             <input placeholder="State" formControlName="state" /><br>
         </div>
     </ng-container>
-</div>
+</div> -->
+<ng-container [formGroup]="group">
+    <div formGroupName="address">
+        <h3>Address</h3>
+
+        <label>
+      Street:
+      <input type="text" formControlName="street">
+    </label>
+
+        <label>
+      City:
+      <input type="text" formControlName="city">
+    </label>
+
+        <label>
+      State:
+      <input type="text" formControlName="state">
+    </label>
+    </div>
+</ng-container>

@@ -1,4 +1,4 @@
-<div [formGroup]="group" class="differ">
+<!-- <div [formGroup]="group" class="differ">
     <ng-container formArrayName="education" *ngFor="let group of educationArray.controls; let i = index">
         <div [formGroupName]="i">
             <label>Degree</label><br>
@@ -7,11 +7,29 @@
         <option value="civil">Civil</option>
         <option value="mechanical">Mechanical</option>
       </select><br>
-            <!-- <input placeholder="Degree" formControlName="degree" /><br> -->
             <label>Field</label><br>
             <input placeholder="Field" formControlName="field" /><br>
             <label>Major</label><br>
             <input placeholder="Major" formControlName="major" /><br>
         </div>
     </ng-container>
-</div>
+</div> -->
+
+<ng-container [formGroup]="group">
+    <div formGroupName="education">
+        <h3>Education</h3>
+
+        <label>Degree</label><br>
+        <select formControlName="degree" id="degree">
+      <option value="software">Software</option>
+      <option value="civil">Civil</option>
+      <option value="mechanical">Mechanical</option>
+    </select><br>
+
+        <label>Field</label><br>
+        <input placeholder="Field" formControlName="field" /><br>
+
+        <label>Major</label><br>
+        <input placeholder="Major" formControlName="major" /><br>
+    </div>
+</ng-container>

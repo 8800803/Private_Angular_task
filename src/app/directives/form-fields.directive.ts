@@ -31,8 +31,10 @@ export class FormFieldsDirective implements AfterViewInit {
   constructor(private vcRef: ViewContainerRef) { }
   ngAfterViewInit(): void {
     this.questions.forEach((element: any) => {
+      console.log(element);
+
       if(element.form == null){
-        const type = element.type;
+      const type = element.type;
       var ref: any;
       const component = this.models[type];
       ref = this.vcRef.createComponent(component);

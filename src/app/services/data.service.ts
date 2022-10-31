@@ -140,7 +140,7 @@ export class DataService {
       },
 
       {
-        "form":"addressForm",
+        "form":"address",
         "key": "street",
         "label": "Street",
         "type": "text",
@@ -149,7 +149,7 @@ export class DataService {
         "order": 10
       },
       {
-        "form":"addressForm",
+        "form":"address",
         "key": "city",
         "label": "City",
         "type": "text",
@@ -158,7 +158,7 @@ export class DataService {
         "order": 11
       },
       {
-        "form":"addressForm",
+        "form":"address",
         "key": "state",
         "label": "State",
         "type": "text",
@@ -167,7 +167,7 @@ export class DataService {
         "order": 12
       },
       {
-        "form":"educationForm",
+        "form":"education",
         "key": "degree",
         "label": "Degree",
         "type": "dropdown",
@@ -190,7 +190,7 @@ export class DataService {
         "order": 13
       },
       {
-        "form":"educationForm",
+        "form":"education",
         "key": "field",
         "label": "Field",
         "type": "text",
@@ -199,7 +199,7 @@ export class DataService {
         "order": 14
       },
       {
-        "form":"educationForm",
+        "form":"education",
         "key": "major",
         "label": "Major",
         "type": "text",
@@ -207,6 +207,34 @@ export class DataService {
         "value":"test",
         "order": 15
       },
+      // {
+      //   "address":[
+      //     {
+      //       "key": "street",
+      //       "label": "Street",
+      //       "type": "text",
+      //       "required": true,
+      //       "value":"12",
+      //       "order": 10
+      //     },
+      //     {
+      //       "key": "city",
+      //       "label": "City",
+      //       "type": "text",
+      //       "required": true,
+      //       "value":"Islamabad",
+      //       "order": 11
+      //     },
+      //     {
+      //       "key": "state",
+      //       "label": "State",
+      //       "type": "text",
+      //       "required": true,
+      //       "value":"Pakistan",
+      //       "order": 12
+      //     },
+      //   ]
+      // }
 
 
     ];
