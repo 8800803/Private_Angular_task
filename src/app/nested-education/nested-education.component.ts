@@ -4,19 +4,17 @@ import { FormArray, UntypedFormGroup } from '@angular/forms';
 @Component({
   selector: 'app-nested-education',
   templateUrl: './nested-education.component.html',
-  styleUrls: ['./nested-education.component.scss']
+  styleUrls: ['./nested-education.component.scss'],
 })
 export class NestedEducationComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+  @Input() formName: any;
   @Input()
   group!: UntypedFormGroup;
 
   get educationArray(): FormArray {
-    return <FormArray>this.group.get('education');
+    return <FormArray>this.group.get(this.formName);
   }
-
 }
