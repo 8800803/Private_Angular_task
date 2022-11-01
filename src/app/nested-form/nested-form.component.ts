@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {
   FormArray,
+  FormBuilder,
   UntypedFormControl,
   UntypedFormGroup,
 } from '@angular/forms';
@@ -11,7 +12,7 @@ import {
   styleUrls: ['./nested-form.component.scss'],
 })
 export class NestedFormComponent implements OnInit {
-  constructor() {}
+  constructor(private _fb: FormBuilder) {}
 
   ngOnInit(): void {}
   @Input() formName: any;

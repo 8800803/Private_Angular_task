@@ -206,7 +206,7 @@ export class DataService {
       // },
       {
         fields: {
-          form: 'address12',
+          form: 'address',
           values: [
             {
               key: 'street',
@@ -214,15 +214,13 @@ export class DataService {
               type: 'text',
               required: true,
               value: '12',
-              order: 10,
             },
             {
               key: 'sub',
-              label: 'Street',
+              label: 'sub',
               type: 'text',
               required: true,
-              value: '12',
-              order: 10,
+              value: '16',
             },
             {
               key: 'city',
@@ -230,7 +228,6 @@ export class DataService {
               type: 'text',
               required: true,
               value: 'Islamabad',
-              order: 11,
             },
             {
               key: 'state',
@@ -238,14 +235,13 @@ export class DataService {
               type: 'text',
               required: true,
               value: 'Pakistan',
-              order: 12,
             },
           ],
         },
       },
       {
         fields: {
-          form: 'education32132',
+          form: 'education',
           values: [
             {
               key: 'degree',

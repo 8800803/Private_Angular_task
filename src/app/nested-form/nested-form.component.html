@@ -13,20 +13,11 @@
 <ng-container [formGroup]="group">
     <div [formGroupName]="formName">
         <h3>Address</h3>
-
-        <label>
-      Street:
-      <input type="text" formControlName="street">
-    </label>
-
-        <label>
-      City:
-      <input type="text" formControlName="city">
-    </label>
-
-        <label>
-      State:
-      <input type="text" formControlName="state">
-    </label>
+        <div *ngFor="let item of addressArray.controls | keyvalue">
+            <label>
+        {{item.key}} <br>
+        <input type="text" [formControlName]="item.key">
+      </label>
+        </div>
     </div>
 </ng-container>
