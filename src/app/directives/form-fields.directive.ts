@@ -2,6 +2,7 @@ import { AfterViewInit, Directive, Input, Type, ViewContainerRef } from '@angula
 import { FormArray, UntypedFormGroup } from '@angular/forms';
 import { ChipsComponent } from '../form-fields/chips/chips.component';
 import { CustomCheckboxComponent } from '../form-fields/custom-checkbox/custom-checkbox.component';
+import { CustomFormGroupComponent } from '../form-fields/custom-form-group/custom-form-group.component';
 import { CustomRadioComponent } from '../form-fields/custom-radio/custom-radio.component';
 import { CustomSelectComponent } from '../form-fields/custom-select/custom-select.component';
 import { CustomTextComponent } from '../form-fields/custom-text/custom-text.component';
@@ -17,47 +18,39 @@ export class FormFieldsDirective implements AfterViewInit {
     password: CustomTextComponent,
     email: CustomTextComponent,
     checkbox: CustomCheckboxComponent,
-    time:CustomTextComponent,
-    date:CustomTextComponent,
+    time: CustomTextComponent,
+    date: CustomTextComponent,
     dropdown: CustomSelectComponent,
     radio: CustomRadioComponent,
     sections: CustomSelectComponent,
-    chips:ChipsComponent,
-    nestedForm:NestedFormComponent,
-    nestedEducation:NestedEducationComponent
+    chips: ChipsComponent,
+    nestedForm: NestedFormComponent,
+    group: CustomFormGroupComponent,
+    nestedEducation: NestedEducationComponent
 
   }
 
   constructor(private vcRef: ViewContainerRef) { }
   ngAfterViewInit(): void {
     this.questions.forEach((element: any) => {
-      if(element.form == null){
-        const type = element.type;
+      const type = element.type;
       var ref: any;
       const component = this.models[type];
       ref = this.vcRef.createComponent(component);
       ref.instance.element = element;
-      ref.instance.formControl = this.group.get(element.key);
+      
+      if (element.form != null) {
+        ref.instance.group = this.group;
+      } else {
+        ref.instance.formControl = this.group.get(element.key); 
       }
     });
-    if(this.group.contains('address')){
-      var ref: any;
-      const component = this.models['nestedForm'];
-      ref = this.vcRef.createComponent(component);
-      ref.instance.group = this.group;
-    }
 
-    if(this.group.contains('education')){
-      var ref: any;
-      const component = this.models['nestedEducation'];
-      ref = this.vcRef.createComponent(component);
-      ref.instance.group = this.group;
-    }
 
 
   }
 
-  @Input() nestedQuestions:any;
+  @Input() nestedQuestions: any;
   // @Input() addressArray!:FormArray
   @Input() questions: any;
   @Input()

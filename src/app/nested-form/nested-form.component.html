@@ -1,12 +1,11 @@
 <div [formGroup]="group" class="differ">
-    <ng-container formArrayName="address" *ngFor="let group of addressArray.controls; let i = index">
-        <div [formGroupName]="i">
-            <label>Street</label><br>
-            <input placeholder="Street" formControlName="street" /><br>
-            <label>City</label><br>
-            <input placeholder="City" formControlName="city" /><br>
-            <label>Country</label><br>
-            <input placeholder="State" formControlName="state" /><br>
+    <ng-container [formArrayName]="element.name" *ngFor="let group of f.controls; let i = index">
+        <div [formGroupName]="i"  >
+        <div  *ngFor="let item of element.subForm">
+            <label>{{item.label}}</label><br>
+            <input  [placeholder]="item.label"   [formControlName]="item.key" /><br>
+            
+        </div>
         </div>
     </ng-container>
 </div>

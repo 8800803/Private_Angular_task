@@ -1,0 +1,8 @@
+<div [formGroup]="group" class="differ">
+    <div [formArrayName]="element.name">
+        <div *ngFor="let item of element.subForm">
+            <label>{{item.label}}</label><br>
+            <input [placeholder]="item.label" [formControlName]="item.key" /><br>
+        </div>
+    </div>
+</div>

@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
   nQuestions: any;
   form!: FormGroup;
 
-  constructor(private DataService:DataService,private _fb: FormBuilder,private nestedQuestions:NestedQuestionService){
-    this.questions= this.DataService.GetData();
+  constructor(private DataService: DataService, private _fb: FormBuilder, private nestedQuestions: NestedQuestionService) {
+    this.questions = this.DataService.GetData();
     this.nQuestions = this.nestedQuestions.GetData();
   }
 
@@ -23,37 +23,39 @@ export class AppComponent implements OnInit {
     // this.form! = this._fb.group(this.toFormGroup(this.questions))
     this.form! = this.toFormGroup(this.questions);
   }
-  toFormGroup(questions:any) {let group: any = {};
-    const nestedAddressGroup:any ={};
-    const nestedEducationGroup:any ={};
-
-    questions.forEach((question: any ) => {
-      if(question.form ==="addressForm"){
-        nestedAddressGroup[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
-        : new FormControl(question.value || '');
-      }
-      else if(question.form ==="educationForm"){
-        nestedEducationGroup[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
-        : new FormControl(question.value || '');
-      }
-      else if(question.type==="sections")
-      {
-        const group1: any = {};
-
-        question.sections.forEach((question: any ) => {
-          group1[question.key]=question.required ? new FormControl(question.value || '', Validators.required)
-          : new FormControl(question.value || '');
+  toFormGroup(questions: any) {
+    let group: any = {};
+    const nestedAddressGroup: any = {};
+    const nestedEducationGroup: any = {}; 
+    questions.forEach((question: any) => {
+      if (question.type === "group") {
+        question.subForm.forEach(x => {
+          nestedAddressGroup[x.key] = this._fb.control(x.value);
         })
-        group[question.key]=new FormGroup(group1);
-      }
-      else{
-        group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
-        : new FormControl(question.value || '');
-      }
+        group[question.name] = this._fb.group(nestedAddressGroup)
+      } else
+        if (question.type === "nestedForm") {
+          question.subForm.forEach(x => {
+            nestedEducationGroup[x.key] = this._fb.control(x.value);
+          })
+          group[question.name] = this._fb.array([this._fb.group(nestedEducationGroup)])
+        }
+        else if (question.type === "sections") {
+          const group1: any = {}; 
+          question.sections.forEach((question: any) => {
+            group1[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
+              : new FormControl(question.value || '');
+          })
+          group[question.key] = new FormGroup(group1);
+        }
+        else {
+          group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
+            : new FormControl(question.value || '');
+        }
     });
 
-    group['address'] = this._fb.array([this._fb.group(nestedAddressGroup)])
-    group['education'] = this._fb.array([this._fb.group(nestedEducationGroup)])
+    // group['address'] = this._fb.array([this._fb.group(nestedAddressGroup)])
+    // group['education'] = this._fb.array([this._fb.group(nestedEducationGroup)])
     // group['education'] = this._fb.array([this.addEducationGroup()])
 
 
@@ -62,24 +64,23 @@ export class AppComponent implements OnInit {
     return this._fb.group(group);
   }
 
-   isValid(key:any,type:any) {
-    if(type!=="sections")
-    {
+  isValid(key: any, type: any) {
+    if (type !== "sections") {
       return this.form.controls[key].valid;
     }
-   return true
+    return true
 
   }
 
-  isValid1(key:any,type:any) {
-     let form1 =this.form.get(type) as FormArray;
-     let bool = form1.controls[key].valid;
-     return bool;
+  isValid1(key: any, type: any) {
+    let form1 = this.form.get(type) as FormArray;
+    let bool = form1.controls[key].valid;
+    return bool;
   }
 
-   addAddressGroup(): FormGroup {
+  addAddressGroup(): FormGroup {
     return this._fb.group({
-      street:'12',
+      street: '12',
       city: 'Islamabad',
       state: 'Pakistan'
     });
@@ -87,7 +88,7 @@ export class AppComponent implements OnInit {
 
   addEducationGroup(): FormGroup {
     return this._fb.group({
-      degree:'Software',
+      degree: 'Software',
       field: 'Computer',
       major: 'test'
     });

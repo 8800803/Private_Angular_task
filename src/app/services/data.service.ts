@@ -102,34 +102,7 @@ export class DataService {
           }
         ],
         "order": 6
-      },
-
-      // {
-      //   "key": "adresssections",
-      //   "label": "Adress",
-      //   "type": "sections",
-      //   "value": "",
-      //   "order": 2,
-      //   sections:[
-      //     {
-      //       "key": "street",
-      //       "label": "Street",
-      //       "type": "text",
-      //       "value": "1",
-
-      //       "order": 2,
-      //     },{
-      //       "key": "House",
-      //       "label": "House",
-      //       "type": "text",
-      //       "value": "2",
-      //       "required": true,
-      //       "order": 2,
-      //     },
-
-
-      //   ]
-      // },
+      }, 
       {
         "key": "Chip",
         "label": "Chip",
@@ -137,77 +110,61 @@ export class DataService {
         "required": true,
         "options": ["apple","banana"],
         "order": 9
-      },
-
+      } , 
       {
-        "form":"addressForm",
-        "key": "street",
-        "label": "Street",
-        "type": "text",
-        "required": true,
-        "value":"12",
-        "order": 10
-      },
-      {
-        "form":"addressForm",
-        "key": "city",
-        "label": "City",
-        "type": "text",
-        "required": true,
-        "value":"Islamabad",
-        "order": 11
-      },
-      {
-        "form":"addressForm",
-        "key": "state",
-        "label": "State",
-        "type": "text",
-        "required": true,
-        "value":"Pakistan",
-        "order": 12
-      },
-      {
-        "form":"educationForm",
-        "key": "degree",
-        "label": "Degree",
-        "type": "dropdown",
-        "value": "software",
-        "required": true,
-        "options": [
-          {
-            "id": "software",
-            "name": "Software"
+        "name": "specifica", 
+        "form": "address", 
+        "label": "Address",
+        "type": "group",
+        "subForm": [
+          { 
+            "key": "city",
+            "label": "City",
+            "type": "text",
+            "required": true,
+            "value": "Islamabad",
+            "order": 11
           },
-          {
-            "id": "civil",
-            "name": "Civil"
-          },
-          {
-            "id": "mechanical",
-            "name": "Mechanical"
+          { 
+            "key": "state",
+            "label": "State",
+            "type": "text",
+            "required": true,
+            "value": "Pakistan",
+            "order": 12
           }
         ],
-        "order": 13
+        "required": true, 
+        "order": 10
       },
+    
       {
-        "form":"educationForm",
-        "key": "field",
-        "label": "Field",
-        "type": "text",
-        "required": true,
-        "value":"Computer",
-        "order": 14
+        "name": "education", 
+        "form": "education", 
+        "label": "Education",
+        "type": "nestedForm",
+        "subForm": [
+          { 
+            "key": "math",
+            "label": "Math",
+            "type": "text",
+            "required": true,
+            "value": "16",
+            "order": 1
+          },
+          { 
+            "key": "physic",
+            "label": "Physic",
+            "type": "text",
+            "required": true,
+            "value": "19",
+            "order": 12
+          }
+        ],
+        "required": true, 
+        "order": 10
       },
-      {
-        "form":"educationForm",
-        "key": "major",
-        "label": "Major",
-        "type": "text",
-        "required": true,
-        "value":"test",
-        "order": 15
-      },
-
+    
 
     ];
 
