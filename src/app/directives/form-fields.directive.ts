@@ -44,22 +44,24 @@ export class FormFieldsDirective implements AfterViewInit {
         ref.instance.element = element;
         ref.instance.formControl = this.group.get(element.key);
       }
+      if (element.fields != null) {
+        if (element.fields.form == this.nestedFormsName[0]) {
+          var ref: any;
+          const component = this.models['nestedForm'];
+          ref = this.vcRef.createComponent(component);
+          ref.instance.element = element;
+          ref.instance.group = this.group;
+          ref.instance.formName = this.nestedFormsName[0];
+        } else {
+          var ref: any;
+          const component = this.models['nestedEducation'];
+          ref = this.vcRef.createComponent(component);
+          ref.instance.element = element;
+          ref.instance.group = this.group;
+          ref.instance.formName = this.nestedFormsName[1];
+        }
+      }
     });
-    if (this.group.contains(this.nestedFormsName[0])) {
-      var ref: any;
-      const component = this.models['nestedForm'];
-      ref = this.vcRef.createComponent(component);
-      ref.instance.group = this.group;
-      ref.instance.formName = this.nestedFormsName[0];
-    }
-
-    if (this.group.contains(this.nestedFormsName[1])) {
-      var ref: any;
-      const component = this.models['nestedEducation'];
-      ref = this.vcRef.createComponent(component);
-      ref.instance.group = this.group;
-      ref.instance.formName = this.nestedFormsName[1];
-    }
   }
 
   @Input() nestedFormsName: any;

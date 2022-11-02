@@ -10,7 +10,7 @@
         </div>
     </ng-container>
 </div> -->
-<ng-container [formGroup]="group">
+<!-- <ng-container [formGroup]="group">
     <div [formGroupName]="formName">
         <h3>Address</h3>
         <div *ngFor="let item of addressArray.controls | keyvalue">
@@ -20,4 +20,13 @@
       </label>
         </div>
     </div>
-</ng-container>
+</ng-container> -->
+
+<div [formGroup]="group" class="differ">
+    <div [formArrayName]="formName">
+        <div *ngFor="let item of element.fields.values">
+            <label>{{item.label}}</label><br>
+            <input [placeholder]="item.label" [formControlName]="item.key" /><br>
+        </div>
+    </div>
+</div>

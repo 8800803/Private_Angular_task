@@ -15,6 +15,8 @@ export class NestedFormComponent implements OnInit {
   constructor(private _fb: FormBuilder) {}
 
   ngOnInit(): void {}
+
+  @Input() element: any;
   @Input() formName: any;
   @Input()
   group!: UntypedFormGroup;

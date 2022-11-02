@@ -8,13 +8,42 @@ import { FormArray, UntypedFormGroup } from '@angular/forms';
 })
 export class NestedEducationComponent implements OnInit {
   constructor() {}
-
-  ngOnInit(): void {}
+  selectedOption: any = 'software';
+  dependState: any = this.selectedOption;
+  hidden: boolean = true;
+  hidden2: boolean = true;
+  i = 0;
+  dependStatesName: string[] = [];
+  changeField(event: any) {
+    if (this.selectedOption == 'software') {
+      this.hidden = true;
+      this.hidden2 = true;
+    }
+    if (event.target.value == 'civil') {
+      this.hidden = false;
+    }
+    if (event.target.value == 'mechanical') {
+      this.hidden2 = false;
+    }
+  }
+  ngOnInit(): void {
+    this.dependStates();
+  }
+  @Input() element: any;
   @Input() formName: any;
   @Input()
   group!: UntypedFormGroup;
 
   get educationArray(): FormArray {
     return <FormArray>this.group.get(this.formName);
+  }
+  dependStates() {
+    this.element.fields.values.forEach((element: any) => {
+      if (element.dependsOn != null) {
+        this.dependStatesName[this.i] = element.dependState;
+        this.i = this.i + 1;
+      }
+    });
+    console.log(this.dependStatesName);
   }
 }
