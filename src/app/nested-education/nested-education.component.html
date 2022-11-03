@@ -13,13 +13,15 @@
             </div>
             <!-- <div *ngIf="item.dependsOn !=null">
                 <div *ngIf="selectedOption != dependState">
-                    <input [placeholder]="item.label" [formControlName]="item.key" [id]="item.key" *ngIf="selectedOption == item.dependState && !hidden" [hidden]="hidden" /><br>
+                    <div>
+                        <input [placeholder]="item.label" [formControlName]="item.key" [id]="item.key" *ngIf="selectedOption == item.dependState && !hidden" /><br>
+                    </div>
                 </div>
             </div> -->
         </div>
         <div *ngIf="selectedOption !=dependState">
-            <input placeholder="field" formControlName="field" *ngIf="selectedOption == dependStatesName[0] || !hidden" [hidden]="hidden" /><br>
-            <input *ngIf="selectedOption == dependStatesName[1] || !hidden" formControlName="major" [hidden]="hidden2" /><br>
+            <input placeholder="field" formControlName="field" *ngIf="selectedOption == dependStatesName[0] || !hidden" /><br>
+            <input *ngIf="selectedOption == dependStatesName[1] || !hidden2" formControlName="major" /><br>
         </div>
     </div>
 </div>

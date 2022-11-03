@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormArray, UntypedFormGroup } from '@angular/forms';
 
 @Component({
@@ -7,6 +7,7 @@ import { FormArray, UntypedFormGroup } from '@angular/forms';
   styleUrls: ['./nested-education.component.scss'],
 })
 export class NestedEducationComponent implements OnInit {
+  // @ViewChild('field') field: any;
   constructor() {}
   selectedOption: any = 'software';
   dependState: any = this.selectedOption;
@@ -18,6 +19,7 @@ export class NestedEducationComponent implements OnInit {
     if (this.selectedOption == 'software') {
       this.hidden = true;
       this.hidden2 = true;
+      // console.log(this.box);
     }
     if (event.target.value == 'civil') {
       this.hidden = false;
@@ -44,6 +46,5 @@ export class NestedEducationComponent implements OnInit {
         this.i = this.i + 1;
       }
     });
-    console.log(this.dependStatesName);
   }
 }

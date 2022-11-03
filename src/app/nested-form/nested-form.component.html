@@ -25,8 +25,17 @@
 <div [formGroup]="group" class="differ">
     <div [formArrayName]="formName">
         <div *ngFor="let item of element.fields.values">
-            <label>{{item.label}}</label><br>
-            <input [placeholder]="item.label" [formControlName]="item.key" /><br>
+            <div *ngIf="item.dependsOn ==null && item.key != test">
+                <label>{{item.label}}</label><br>
+                <input [placeholder]="item.label" [formControlName]="item.key" /><br>
+            </div>
+            <div *ngIf="item.key == test">
+                <label>{{item.label}}</label><br>
+                <input [placeholder]="item.label" [formControlName]="item.key" (change)="somethingChanged($event)" /><br>
+            </div>
+            <div *ngIf="item.dependsOn !=null">
+                <input [placeholder]="item.label" [formControlName]="item.key" [hidden]="hidden" /><br>
+            </div>
         </div>
     </div>
 </div>
