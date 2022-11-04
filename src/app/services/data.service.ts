@@ -21,6 +21,9 @@ export class DataService {
         type: 'text',
         value: 'family',
         required: true,
+        hidden: true,
+        // dependsOn: 'firstName',
+        // dependState: ['test', 'test1', 'just'],
         order: 2,
       },
 
@@ -38,8 +41,6 @@ export class DataService {
         type: 'email',
         value: 'sardaryawarabbas@gmail.com',
         required: true,
-        dependsOn: 'Password',
-        dependState: ['test', 'test1', 'just'],
         order: 4,
       },
       {
@@ -135,6 +136,14 @@ export class DataService {
               dependState: ['14', 'test'],
             },
             {
+              key: 'city',
+              label: 'City',
+              type: 'text',
+              required: true,
+              value: 'Islamabad',
+              order: 12,
+            },
+            {
               key: 'dep',
               label: 'dep',
               type: 'text',
@@ -144,14 +153,6 @@ export class DataService {
               hidden: true,
               dependsOn: 'city',
               dependState: ['city', 'test'],
-            },
-            {
-              key: 'city',
-              label: 'City',
-              type: 'text',
-              required: true,
-              value: 'Islamabad',
-              order: 12,
             },
             {
               key: 'state',

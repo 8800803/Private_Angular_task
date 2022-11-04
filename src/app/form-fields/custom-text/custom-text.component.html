@@ -1,13 +1,14 @@
 <div class="mb-3 row">
-    <label class="col-sm-2 col-form-label">{{element.label}}</label>
+    <label class="col-sm-2 col-form-label" *ngIf="element.dependsOn == null">{{element.label}}</label>
     <div class="col-sm-10">
-        <!-- <div *ngIf="element.depends == null && element.key != test"> -->
-        <input *ngIf="element.type!=='number'" [formControl]="formControl" [type]="element.type" class="form-control" id="inputPassword">
-        <!-- </div> -->
-        <!-- <div *ngIf="element.key == test">
-            <input *ngIf="element.type!=='number'" [formControl]="formControl" [type]="element.type" class="form-control" id="inputPassword" [hidden]="hidden" (change)="somethingChanged($event)">
-        </div> -->
-        <input *ngIf="element.type==='number'" [formControl]="formControl" type="number" class="form-control" id="inputPassword">
+        <div *ngIf="element.dependsOn == null; else elsepart">
+            <input *ngIf="element.type!=='number'" [formControl]="formControl" [type]="element.type" class="form-control" id="inputPassword">
+            <input *ngIf="element.type==='number'" [formControl]="formControl" type="number" class="form-control" id="inputPassword">
+        </div>
+        <ng-template #elsepart>
+            <input *ngIf="element.type!=='number'" [formControl]="formControl" [type]="element.type" class="form-control" id="inputPassword" [hidden]="element.hidden">
+            <input *ngIf="element.type==='number'" [formControl]="formControl" type="number" class="form-control" id="inputPassword" [hidden]="element.hidden">
+        </ng-template>
     </div>
 </div>
 <div *ngIf="formControl.invalid && (formControl.dirty || formControl.touched)" class="">
@@ -18,10 +19,3 @@
         </div>
     </div>
 </div>
-<!-- <div class="address-container" *ngFor="let group of addressArray.controls; let i = index" formArrayName="address">
-    <div [formGroupName]="i">
-        <input matInput placeholder="Street" value="" formControlName="street" />
-        <input matInput placeholder="City" value="" formControlName="city" />
-        <input matInput placeholder="State" value="" formControlName="state" />
-    </div>
-</div> -->

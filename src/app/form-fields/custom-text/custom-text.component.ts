@@ -14,9 +14,7 @@ export class CustomTextComponent implements OnInit {
   hidden: boolean = true;
   test: any;
   value: any;
-  ngOnInit(): void {
-    // this.getHiddenFields();
-  }
+  ngOnInit(): void {}
   constructor() {}
 
   @Input() element: any;
@@ -24,19 +22,4 @@ export class CustomTextComponent implements OnInit {
   // group!: UntypedFormGroup;
   formControl!: UntypedFormControl;
   @(Input!('section')) section: any;
-
-  // somethingChanged(event: any) {
-  //   console.log(event.target.value);
-  //   if (event.target.value == this.value[0]) {
-  //     this.hidden = false;
-  //   }
-  // }
-
-  // getHiddenFields() {
-  //   if (this.element.dependsOn != null) {
-  //     this.test = this.element.dependsOn;
-  //     this.value = this.element.dependState;
-  //     console.log(this.value);
-  //   }
-  // }
 }
