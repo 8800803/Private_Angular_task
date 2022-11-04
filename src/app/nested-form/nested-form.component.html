@@ -1,41 +1,8 @@
-<!-- <div [formGroup]="group" class="differ">
-    <ng-container formArrayName="address" *ngFor="let group of addressArray.controls; let i = index">
-        <div [formGroupName]="i">
-            <label>Street</label><br>
-            <input placeholder="Street" formControlName="street" /><br>
-            <label>City</label><br>
-            <input placeholder="City" formControlName="city" /><br>
-            <label>Country</label><br>
-            <input placeholder="State" formControlName="state" /><br>
-        </div>
-    </ng-container>
-</div> -->
-<!-- <ng-container [formGroup]="group">
-    <div [formGroupName]="formName">
-        <h3>Address</h3>
-        <div *ngFor="let item of addressArray.controls | keyvalue">
-            <label>
-        {{item.key}} <br>
-        <input type="text" [formControlName]="item.key">
-      </label>
-        </div>
-    </div>
-</ng-container> -->
-
 <div [formGroup]="group" class="differ">
     <div [formArrayName]="formName">
-        <div *ngFor="let item of element.fields.values">
-            <div *ngIf="item.dependsOn ==null && item.key != test">
-                <label>{{item.label}}</label><br>
-                <input [placeholder]="item.label" [formControlName]="item.key" /><br>
-            </div>
-            <div *ngIf="item.key == test">
-                <label>{{item.label}}</label><br>
-                <input [placeholder]="item.label" [formControlName]="item.key" /><br>
-            </div>
-            <div *ngIf="item.dependsOn !=null">
-                <input [placeholder]="item.label" [formControlName]="item.key" [hidden]="item.hidden" /><br>
-            </div>
+        <div *ngFor="let item of element.fields.values" [hidden]="!canShow(item)"> 
+            <label>{{item.label}}</label> 
+            <input [placeholder]="item.label" [formControlName]="item.key"  />
         </div>
     </div>
 </div>
