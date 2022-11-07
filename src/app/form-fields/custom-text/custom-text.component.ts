@@ -19,6 +19,7 @@ export class CustomTextComponent implements OnInit {
 
   @Input() element: any;
   @Input() check: any;
+  @Input() formName: any;
   @Input()
   group!: UntypedFormGroup;
   formControl!: UntypedFormControl;

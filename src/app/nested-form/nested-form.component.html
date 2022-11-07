@@ -1,11 +1,7 @@
 <div [formGroup]="group" class="differ">
     <div [formArrayName]="formName">
         <div *ngFor="let item of element.fields.values" [hidden]="!canShow(item)">
-            <div *ngIf="item.type =='text'">
-                <!-- <label>{{item.label}}</label>
-                <input [placeholder]="item.label" [formControlName]="item.key" /> -->
-                <app-custom-text [element]="item" [check]="true" [group]="group"></app-custom-text>
-            </div>
+            <div appFormFields [nestedQuestion]="item" [check]="true" [group]="group" [nestedFormsName]="formName"></div>
         </div>
     </div>
 </div>

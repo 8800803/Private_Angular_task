@@ -35,53 +35,44 @@ export class FormFieldsDirective implements AfterViewInit {
 
   constructor(private vcRef: ViewContainerRef) {}
   ngAfterViewInit(): void {
-    // console.log(this.nestedQuestion);
-
-    // if (this.nestedQuestion != null) {
-    //   console.log(this.nestedQuestion.type);
-
-    //   // console.log(
-    //   //   this.group.get(this.nestedFormsName[0])?.get(this.nestedQuestion.key)
-    //   // );
-
-    //   const type = this.nestedQuestion.type;
-    //   var ref: any;
-    //   const component = this.models[type];
-    //   ref = this.vcRef.createComponent(component);
-    //   ref.instance.element = this.nestedQuestion;
-    //   ref.instance.check = this.check;
-    //   // ref.instance.formControl = this.group
-    //   //   .get(this.nestedFormsName[0])
-    //   //   ?.get(this.nestedQuestion.key);
-    // } else {
-    this.questions.forEach((element: any) => {
-      if (element.fields == null) {
-        const type = element.type;
-        var ref: any;
-        const component = this.models[type];
-        ref = this.vcRef.createComponent(component);
-        ref.instance.element = element;
-        ref.instance.formControl = this.group.get(element.key);
-      }
-      if (element.fields != null) {
-        if (element.fields.form == this.nestedFormsName[0]) {
+    if (this.nestedQuestion != null) {
+      const type = this.nestedQuestion.type;
+      var ref: any;
+      const component = this.models[type];
+      ref = this.vcRef.createComponent(component);
+      ref.instance.element = this.nestedQuestion;
+      ref.instance.check = this.check;
+      ref.instance.group = this.group;
+      ref.instance.formName = this.nestedFormsName;
+    } else {
+      this.questions.forEach((element: any) => {
+        if (element.fields == null) {
+          const type = element.type;
           var ref: any;
-          const component = this.models['nestedForm'];
+          const component = this.models[type];
           ref = this.vcRef.createComponent(component);
           ref.instance.element = element;
-          ref.instance.group = this.group;
-          ref.instance.formName = this.nestedFormsName[0];
-        } else {
-          var ref: any;
-          const component = this.models['nestedEducation'];
-          ref = this.vcRef.createComponent(component);
-          ref.instance.element = element;
-          ref.instance.group = this.group;
-          ref.instance.formName = this.nestedFormsName[1];
+          ref.instance.formControl = this.group.get(element.key);
         }
-      }
-    });
-    // }
+        if (element.fields != null) {
+          if (element.fields.form == this.nestedFormsName[0]) {
+            var ref: any;
+            const component = this.models['nestedForm'];
+            ref = this.vcRef.createComponent(component);
+            ref.instance.element = element;
+            ref.instance.group = this.group;
+            ref.instance.formName = this.nestedFormsName[0];
+          } else {
+            var ref: any;
+            const component = this.models['nestedEducation'];
+            ref = this.vcRef.createComponent(component);
+            ref.instance.element = element;
+            ref.instance.group = this.group;
+            ref.instance.formName = this.nestedFormsName[1];
+          }
+        }
+      });
+    }
   }
 
   @Input() nestedFormsName: any;
