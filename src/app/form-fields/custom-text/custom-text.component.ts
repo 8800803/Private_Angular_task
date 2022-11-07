@@ -18,8 +18,18 @@ export class CustomTextComponent implements OnInit {
   constructor() {}
 
   @Input() element: any;
-  // @Input()
-  // group!: UntypedFormGroup;
+  @Input() check: any;
+  @Input()
+  group!: UntypedFormGroup;
   formControl!: UntypedFormControl;
   @(Input!('section')) section: any;
+
+  // canShow(config: any) {
+  //   if (!config.dependsOn) {
+  //     return true;
+  //   }
+  //   return config.dependState.includes(
+  //     this.group.get('address')?.get(config.dependsOn)?.value
+  //   );
+  // }
 }

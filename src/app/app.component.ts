@@ -70,9 +70,6 @@ export class AppComponent implements OnInit {
               ? new FormControl(field.value || '', Validators.required)
               : new FormControl(field.value || '');
           });
-          // group[this.nestedFormsName[0]] = this._fb.group(
-          //   this.nestedAddressGroup
-          // );
         }
         this.check2 = true;
       } else if (question.type === 'sections') {
@@ -90,12 +87,6 @@ export class AppComponent implements OnInit {
           : new FormControl(question.value || '');
       }
     });
-    // group[this.nestedFormsName[0]] = this._fb.array([
-    //   this._fb.group(this.nestedAddressGroup),
-    // ]);
-    // group[this.nestedFormsName[1]] = this._fb.array([
-    //   this._fb.group(this.nestedEducationGroup),
-    // ]);
 
     return this._fb.group(group);
   }

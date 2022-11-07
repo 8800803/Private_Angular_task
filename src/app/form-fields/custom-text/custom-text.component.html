@@ -1,21 +1,30 @@
-<div class="mb-3 row">
-    <label class="col-sm-2 col-form-label" *ngIf="element.dependsOn == null">{{element.label}}</label>
-    <div class="col-sm-10">
-        <div *ngIf="element.dependsOn == null; else elsepart">
+<div *ngIf="check == null">
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">{{element.label}}</label>
+        <div class="col-sm-10">
             <input *ngIf="element.type!=='number'" [formControl]="formControl" [type]="element.type" class="form-control" id="inputPassword">
             <input *ngIf="element.type==='number'" [formControl]="formControl" type="number" class="form-control" id="inputPassword">
         </div>
-        <ng-template #elsepart>
-            <input *ngIf="element.type!=='number'" [formControl]="formControl" [type]="element.type" class="form-control" id="inputPassword" [hidden]="element.hidden">
-            <input *ngIf="element.type==='number'" [formControl]="formControl" type="number" class="form-control" id="inputPassword" [hidden]="element.hidden">
-        </ng-template>
+    </div>
+    <div *ngIf="formControl.invalid && (formControl.dirty || formControl.touched)" class="">
+
+        <div *ngIf="formControl.errors?.['required']">
+            <div style="color:red ; margin-bottom: 2px;" class="mb-3 row">
+                {{element.label}} is required.
+            </div>
+        </div>
     </div>
 </div>
-<div *ngIf="formControl.invalid && (formControl.dirty || formControl.touched)" class="">
-
-    <div *ngIf="formControl.errors?.['required']">
-        <div style="color:red ; margin-bottom: 2px;" class="mb-3 row">
-            {{element.label}} is required.
+<div *ngIf="check != null">
+    <div [formGroup]="group" class="differ">
+        <div formArrayName="address">
+            <div class="mb-3 row">
+                <label class="col-sm-2 col-form-label">{{element.label}}</label>
+                <div class="col-sm-10">
+                    <input *ngIf="element.type!=='number'" [formControlName]="element.key" [type]="element.type" class="form-control" id="inputPassword">
+                    <input *ngIf="element.type==='number'" [formControlName]="element.key" type="number" class="form-control" id="inputPassword">
+                </div>
+            </div>
         </div>
     </div>
 </div>

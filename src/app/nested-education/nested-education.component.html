@@ -11,13 +11,6 @@
           <option *ngFor="let option of item.options" [value]="option.id">{{option.name}}</option>
         </select><br>
             </div>
-            <!-- <div *ngIf="item.dependsOn !=null">
-                <div *ngIf="selectedOption != dependState">
-                    <div>
-                        <input [placeholder]="item.label" [formControlName]="item.key" [id]="item.key" *ngIf="selectedOption == item.dependState && !hidden" /><br>
-                    </div>
-                </div>
-            </div> -->
         </div>
         <div *ngIf="selectedOption !=dependState">
             <input placeholder="field" formControlName="field" *ngIf="selectedOption == dependStatesName[0] || !hidden" /><br>

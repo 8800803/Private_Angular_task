@@ -35,6 +35,25 @@ export class FormFieldsDirective implements AfterViewInit {
 
   constructor(private vcRef: ViewContainerRef) {}
   ngAfterViewInit(): void {
+    // console.log(this.nestedQuestion);
+
+    // if (this.nestedQuestion != null) {
+    //   console.log(this.nestedQuestion.type);
+
+    //   // console.log(
+    //   //   this.group.get(this.nestedFormsName[0])?.get(this.nestedQuestion.key)
+    //   // );
+
+    //   const type = this.nestedQuestion.type;
+    //   var ref: any;
+    //   const component = this.models[type];
+    //   ref = this.vcRef.createComponent(component);
+    //   ref.instance.element = this.nestedQuestion;
+    //   ref.instance.check = this.check;
+    //   // ref.instance.formControl = this.group
+    //   //   .get(this.nestedFormsName[0])
+    //   //   ?.get(this.nestedQuestion.key);
+    // } else {
     this.questions.forEach((element: any) => {
       if (element.fields == null) {
         const type = element.type;
@@ -62,9 +81,12 @@ export class FormFieldsDirective implements AfterViewInit {
         }
       }
     });
+    // }
   }
 
   @Input() nestedFormsName: any;
+  @Input() nestedQuestion: any;
+  @Input() check: any;
   @Input() questions: any;
   @Input()
   group!: UntypedFormGroup;

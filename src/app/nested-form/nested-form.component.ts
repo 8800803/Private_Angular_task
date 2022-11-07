@@ -6,16 +6,18 @@ import { UntypedFormGroup } from '@angular/forms';
   templateUrl: './nested-form.component.html',
   styleUrls: ['./nested-form.component.scss'],
 })
-export class NestedFormComponent { 
+export class NestedFormComponent {
   @Input() element: any;
   @Input() formName: any;
-  @Input()  group!: UntypedFormGroup; 
+  @Input() group!: UntypedFormGroup;
 
   canShow(config: any) {
     if (!config.dependsOn) {
       return true;
-    } 
-    return config.dependState.includes(this.group.get(this.formName)?.get(config.dependsOn)?.value)
-  }
+    }
 
+    return config.dependState.includes(
+      this.group.get(this.formName)?.get(config.dependsOn)?.value
+    );
+  }
 }
