@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class DataService {
-  constructor() {}
+  constructor() { }
   public GetData() {
     let ViewData: any = [
       {
@@ -16,17 +16,14 @@ export class DataService {
         order: 1,
       },
       {
-        key: 'Faimly',
-        label: 'Faimly',
+        key: 'family',
+        label: 'Family',
         type: 'text',
         value: 'family',
         required: true,
-        hidden: true,
-        // dependsOn: 'firstName',
-        // dependState: ['test', 'test1', 'just'],
+        hidden: true, 
         order: 2,
-      },
-
+      }, 
       {
         key: 'Password',
         label: 'Password',
@@ -113,115 +110,74 @@ export class DataService {
         order: 9,
       },
       {
-        fields: {
-          form: 'address',
-          values: [
-            {
-              key: 'street',
-              label: 'Street',
-              type: 'text',
-              required: true,
-              value: '12',
-              order: 10,
-            },
-            {
-              key: 'sub',
-              label: 'sub',
-              type: 'text',
-              required: true,
-              value: '16',
-              order: 11,
-              hidden: true,
-              dependsOn: 'street',
-              dependState: ['14', 'test'],
-            },
-            {
-              key: 'city',
-              label: 'City',
-              type: 'text',
-              required: true,
-              value: 'Islamabad',
-              order: 12,
-            },
-            {
-              key: 'dep',
-              label: 'dep',
-              type: 'text',
-              required: true,
-              value: 'dependent',
-              order: 11,
-              hidden: true,
-              dependsOn: 'city',
-              dependState: ['city', 'test'],
-            },
-            {
-              key: 'state',
-              label: 'State',
-              type: 'text',
-              required: true,
-              value: 'Pakistan',
-              order: 13,
-            },
-            // {
-            //   key: 'pass2',
-            //   label: 'pass2',
-            //   type: 'password',
-            //   value: 'sadojimal129',
-            //   required: true,
-            //   order: 23,
-            // },
-          ],
-        },
-      },
-      {
-        fields: {
-          form: 'education',
-          values: [
-            {
-              key: 'degree',
-              label: 'Degree',
-              type: 'dropdown',
-              value: 'software',
-              required: true,
-              options: [
-                {
-                  id: 'software',
-                  name: 'Software',
-                },
-                {
-                  id: 'civil',
-                  name: 'Civil',
-                },
-                {
-                  id: 'mechanical',
-                  name: 'Mechanical',
-                },
-              ],
-              order: 13,
-            },
-            {
-              key: 'field',
-              label: 'Field',
-              type: 'text',
-              required: true,
-              value: 'Computer',
-              dependsOn: 'degree',
-              dependState: ['civil'],
-              order: 14,
-            },
-            {
-              key: 'major',
-              label: 'Major',
-              type: 'text',
-              required: true,
-              value: 'major',
-              dependsOn: 'degree',
-              dependState: ['mechanical'],
-              order: 15,
-            },
-          ],
-        },
-      },
+        key: 'group',
+        label: 'Group',
+        type: 'group',
+        required: true,
+        children: [
+          {
+            key: 'street',
+            label: 'Street',
+            type: 'text',
+            required: true,
+            value: '123',
+            order: 10,
+          },
+          {
+            key: 'sub',
+            label: 'sub',
+            required: true,
+            value: 2,
+            type: 'dropdown',
+            options: [
+              {
+                id: 1,
+                name: 'Pakistan1',
+              },
+              {
+                id: 2,
+                name: 'Dubai1',
+              },
+              {
+                id: 3,
+                name: 'UAE1',
+              },
+            ],
+            order: 11,
+            hidden: true,
+            dependsOn: 'street',
+            dependState: ['14', '12', 'test'],
+          },
+          {
+            key: 'city',
+            label: 'City',
+            type: 'text',
+            required: true,
+            value: 'Islamabad',
+            order: 12,
+          },
+          {
+            key: 'dep',
+            label: 'dep',
+            type: 'text',
+            required: true,
+            value: 'dependent',
+            order: 11,
+            hidden: true,
+            dependsOn: 'city',
+            dependState: ['city', 'test'],
+          },
+          {
+            key: 'state',
+            label: 'State',
+            type: 'text',
+            required: true,
+            value: 'Pakistan',
+            order: 13,
+          }
+        ],
+        order: 9,
+      } 
     ];
 
     return ViewData;

@@ -1,7 +1,4 @@
-<div [formGroup]="group" class="differ">
-    <div [formArrayName]="formName">
-        <div *ngFor="let item of element.fields.values" [hidden]="!canShow(item)">
-            <div appFormFields [nestedQuestion]="item" [check]="true" [group]="group" [nestedFormsName]="formName"></div>
-        </div>
+<div [formGroup]="formGroup" class="differ"> 
+    <div appFormFields [questions]="element.children" [group]="formGroup" >
     </div>
-</div>
+</div> 

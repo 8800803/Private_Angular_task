@@ -1,24 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormFieldsDirective } from './directives/form-fields.directive';
-import { CustomTextComponent } from './form-fields/custom-text/custom-text.component';
+import { ChipsComponent } from './form-fields/chips/chips.component';
+import { CustomCheckboxComponent } from './form-fields/custom-checkbox/custom-checkbox.component';
+import { CustomLabelComponent } from './form-fields/custom-label/custom-label.component';
+import { CustomRadioComponent } from './form-fields/custom-radio/custom-radio.component';
 import { CustomSelectComponent } from './form-fields/custom-select/custom-select.component';
 import { CustomSelectionsComponent } from './form-fields/custom-selections/custom-selections.component';
-import { CustomRadioComponent } from './form-fields/custom-radio/custom-radio.component';
-import { CustomLabelComponent } from './form-fields/custom-label/custom-label.component';
-import { CustomCheckboxComponent } from './form-fields/custom-checkbox/custom-checkbox.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { ChipsComponent } from './form-fields/chips/chips.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
+import { CustomTextComponent } from './form-fields/custom-text/custom-text.component';
 import { NestedFormComponent } from './nested-form/nested-form.component';
-import { NestedEducationComponent } from './nested-education/nested-education.component';
 import { ObjectToArrayPipe } from './pipes/object-to-array.pipe';
 
 @NgModule({
@@ -32,8 +31,7 @@ import { ObjectToArrayPipe } from './pipes/object-to-array.pipe';
     CustomLabelComponent,
     CustomCheckboxComponent,
     ChipsComponent,
-    NestedFormComponent,
-    NestedEducationComponent,
+    NestedFormComponent, 
     ObjectToArrayPipe
   ],
   imports: [
